@@ -1,6 +1,8 @@
+import { AddFavoritesDialogComponent } from './../common/add-favorites-dialog/add-favorites-dialog.component';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { PicsumPhoto } from 'src/app/interfaces/picsumPhoto';
 import { ServiceService } from 'src/app/services/service.service';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-photos-list',
@@ -13,7 +15,10 @@ export class PhotosListComponent implements OnInit {
   timer: any;
   showSpinner: boolean = false;
 
-  constructor(private service: ServiceService) {}
+  constructor(
+    private service: ServiceService,
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.getPhotos();
@@ -48,5 +53,27 @@ export class PhotosListComponent implements OnInit {
 
   private randomDelay() {
     return Math.random() * 5000;
+  }
+
+  onImgClick(photo:PicsumPhoto) {
+    if(!sessionStorage.getItem(photo.id.toString())) {
+      sessionStorage.setItem(photo.id.toString(), 'https://picsum.photos/g/200/300');
+      this.openDialog('1000ms', '1000ms', true);
+    }else {
+      this.openDialog('1000ms', '1000ms', false);
+    }
+  }
+
+  openDialog(enterAnimationDuration: string, exitAnimationDuration: string, success: boolean): void {
+    const dialogRef = this.dialog.open(AddFavoritesDialogComponent, {
+      width: '250px',
+      enterAnimationDuration, 
+      exitAnimationDuration,
+      data: {success}
+    });
+
+    dialogRef.afterClosed().subscribe(
+      result => {
+    });
   }
 }

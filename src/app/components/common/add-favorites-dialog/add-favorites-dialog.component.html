@@ -1,0 +1,7 @@
+<h1 mat-dialog-title class="d-flex justify-content-center">{{data.success ? 'Success' : 'Failure'}}</h1>
+<div mat-dialog-content class="d-flex justify-content-center">
+  {{data.success ? 'added to favorites' : 'already added in favorites'}}
+</div>
+<div mat-dialog-actions class="d-flex justify-content-center">
+  <button mat-button mat-dialog-close cdkFocusInitial>Ok</button>
+</div>

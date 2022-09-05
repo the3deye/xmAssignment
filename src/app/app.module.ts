@@ -12,6 +12,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { HttpClientModule } from '@angular/common/http';
+import { MatDialogModule } from '@angular/material/dialog';
+import { AddFavoritesDialogComponent } from './components/common/add-favorites-dialog/add-favorites-dialog.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     PhotosListComponent,
     PhotosFavoritesComponent,
-    PhotoDetailsComponent
+    PhotoDetailsComponent,
+    AddFavoritesDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -30,6 +33,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatButtonModule,
     MatGridListModule,
     MatProgressSpinnerModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
