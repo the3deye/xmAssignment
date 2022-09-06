@@ -1,5 +1,5 @@
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { AddFavoritesDialogComponent } from './add-favorites-dialog.component';
 
 describe('AddFavoritesDialogComponent', () => {
@@ -8,6 +8,10 @@ describe('AddFavoritesDialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      providers: [
+        { provide: MAT_DIALOG_DATA, useValue: {} },
+        { provide: MatDialogRef, useValue: {} }
+      ],
       declarations: [ AddFavoritesDialogComponent ]
     })
     .compileComponents();

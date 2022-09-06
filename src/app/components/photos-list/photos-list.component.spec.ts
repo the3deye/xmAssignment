@@ -1,6 +1,8 @@
+import { MatDialogModule } from '@angular/material/dialog';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { PhotosListComponent } from './photos-list.component';
+import { ServiceService } from 'src/app/services/service.service';
 
 describe('PhotosListComponent', () => {
   let component: PhotosListComponent;
@@ -8,6 +10,8 @@ describe('PhotosListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [ HttpClientTestingModule, MatDialogModule ],
+      providers: [ServiceService],
       declarations: [ PhotosListComponent ]
     })
     .compileComponents();
